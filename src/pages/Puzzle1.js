@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Puzzle1({ updateToken }) {
@@ -10,10 +10,12 @@ function Puzzle1({ updateToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Submit clicked, answer:', answer);
     setLoading(true);
     setMessage('');
 
     try {
+      console.log('Sending request...');
       const response = await fetch('/api/verify-answer', {
         method: 'POST',
         headers: {
@@ -25,9 +27,12 @@ function Puzzle1({ updateToken }) {
         }),
       });
 
+      console.log('Response received:', response.status);
       const data = await response.json();
+      console.log('Data:', data);
 
       if (data.success) {
+        console.log('Setting isCorrect to true');
         setMessage(data.message);
         setIsCorrect(true);
         updateToken(data.next_puzzle, data.token);
@@ -36,10 +41,12 @@ function Puzzle1({ updateToken }) {
         setIsCorrect(false);
       }
     } catch (error) {
+      console.error('Error:', error);
       setMessage('Error submitting answer. Please try again.');
       setIsCorrect(false);
     } finally {
       setLoading(false);
+      console.log('Submit complete');
     }
   };
 
