@@ -88,6 +88,8 @@ function Puzzle3({ updateToken }) {
         <form onSubmit={handleSubmit} className="answer-section">
           <input
             type="text"
+            name="answer"
+            id="answer-input"
             className="answer-input"
             placeholder="Enter what you found (COLOR and SHAPE)..."
             value={answer}

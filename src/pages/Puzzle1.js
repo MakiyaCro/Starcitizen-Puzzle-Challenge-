@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Puzzle1({ updateToken }) {
@@ -8,38 +8,74 @@ function Puzzle1({ updateToken }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Test API connectivity on component mount
+    console.log('Puzzle1 component mounted');
+    console.log('Testing API connectivity...');
+    fetch('/api/health')
+      .then(response => {
+        console.log('Health check response:', response.status);
+        return response.json();
+      })
+      .then(data => {
+        console.log('✅ API is reachable:', data);
+      })
+      .catch(error => {
+        console.error('❌ API health check failed:', error);
+      });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('=== PUZZLE 1 SUBMIT ===');
+    console.log('Answer submitted:', answer);
+    console.log('Answer trimmed:', answer.trim());
+    
     setLoading(true);
     setMessage('');
 
     try {
+      const requestBody = {
+        puzzle_id: 'puzzle1',
+        answer: answer.trim(),
+      };
+      console.log('Request body:', requestBody);
+
       const response = await fetch('/api/verify-answer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          puzzle_id: 'puzzle1',
-          answer: answer.trim(),
-        }),
+        body: JSON.stringify(requestBody),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (data.success) {
+        console.log('✅ Answer CORRECT!');
+        console.log('Next puzzle:', data.next_puzzle);
+        console.log('Token received:', data.token ? 'Yes' : 'No');
         setMessage(data.message);
         setIsCorrect(true);
         updateToken(data.next_puzzle, data.token);
       } else {
+        console.log('❌ Answer INCORRECT');
+        console.log('Error message:', data.message);
         setMessage(data.message);
         setIsCorrect(false);
       }
     } catch (error) {
+      console.error('🔥 ERROR submitting answer:', error);
+      console.error('Error details:', error.message);
       setMessage('Error submitting answer. Please try again.');
       setIsCorrect(false);
     } finally {
       setLoading(false);
+      console.log('=== END SUBMIT ===');
     }
   };
 
@@ -62,6 +98,8 @@ function Puzzle1({ updateToken }) {
         <form onSubmit={handleSubmit} className="answer-section">
           <input
             type="text"
+            name="answer"
+            id="answer-input"
             className="answer-input"
             placeholder="Enter your answer..."
             value={answer}
