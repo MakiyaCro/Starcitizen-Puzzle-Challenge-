@@ -56,20 +56,22 @@ function Puzzle1({ updateToken }) {
       console.log('Response data:', data);
 
       if (data.success) {
-        console.log('✅ Answer CORRECT!');
+        console.log('Answer CORRECT!');
         console.log('Next puzzle:', data.next_puzzle);
         console.log('Token received:', data.token ? 'Yes' : 'No');
         setMessage(data.message);
         setIsCorrect(true);
+        console.log('isCorrect set to TRUE');
         updateToken(data.next_puzzle, data.token);
+        console.log('updateToken called with:', data.next_puzzle, data.token ? 'token exists' : 'no token');
       } else {
-        console.log('❌ Answer INCORRECT');
+        console.log('Answer INCORRECT');
         console.log('Error message:', data.message);
         setMessage(data.message);
         setIsCorrect(false);
       }
     } catch (error) {
-      console.error('🔥 ERROR submitting answer:', error);
+      console.error('ERROR submitting answer:', error);
       console.error('Error details:', error.message);
       setMessage('Error submitting answer. Please try again.');
       setIsCorrect(false);
@@ -126,13 +128,16 @@ function Puzzle1({ updateToken }) {
       </div>
 
       {isCorrect && (
-        <button 
-          type="button"
-          className="next-button"
-          onClick={handleNext}
-        >
-          Continue to Next Puzzle →
-        </button>
+        <>
+          {console.log('🟢 Rendering next button! isCorrect:', isCorrect)}
+          <button 
+            type="button"
+            className="next-button"
+            onClick={handleNext}
+          >
+            Continue to Next Puzzle →
+          </button>
+        </>
       )}
     </div>
   );
