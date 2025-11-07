@@ -6,6 +6,7 @@ function Puzzle1({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [nextData, setNextData] = useState(null); // store token & next puzzle
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -17,9 +18,7 @@ function Puzzle1({ updateToken }) {
       console.log('Sending request...');
       const response = await fetch('/api/verify-answer', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           puzzle_id: 'puzzle1',
           answer: answer.trim(),
@@ -34,7 +33,8 @@ function Puzzle1({ updateToken }) {
         console.log('Setting isCorrect to true');
         setMessage(data.message);
         setIsCorrect(true);
-        updateToken(data.next_puzzle, data.token);
+        // Store next puzzle and token locally instead of calling updateToken now
+        setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
@@ -50,6 +50,9 @@ function Puzzle1({ updateToken }) {
   };
 
   const handleNext = () => {
+    if (nextData) {
+      updateToken(nextData.next_puzzle, nextData.token);
+    }
     navigate('/puzzle2');
   };
 
