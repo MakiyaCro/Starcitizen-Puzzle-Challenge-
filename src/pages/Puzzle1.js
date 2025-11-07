@@ -8,8 +8,7 @@ function Puzzle1({ updateToken }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     console.log('Submit clicked, answer:', answer);
     setLoading(true);
     setMessage('');
@@ -66,7 +65,7 @@ function Puzzle1({ updateToken }) {
           How many jump points can we traverse, how many stars to guide?
         </div>
 
-        <form onSubmit={handleSubmit} className="answer-section">
+        <div className="answer-section">
           <input
             type="text"
             name="answer"
@@ -80,9 +79,10 @@ function Puzzle1({ updateToken }) {
           
           {!isCorrect && (
             <button 
-              type="submit" 
+              type="button"
               className="submit-button"
               disabled={loading || !answer.trim()}
+              onClick={handleSubmit}
             >
               {loading ? 'Checking...' : 'Submit Answer'}
             </button>
@@ -93,7 +93,7 @@ function Puzzle1({ updateToken }) {
               {message}
             </div>
           )}
-        </form>
+        </div>
       </div>
 
       {isCorrect && (
