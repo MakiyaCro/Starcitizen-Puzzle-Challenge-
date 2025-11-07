@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Puzzle1({ updateToken }) {
@@ -52,6 +52,10 @@ function Puzzle1({ updateToken }) {
   const handleNext = () => {
     navigate('/puzzle2');
   };
+
+  useEffect(() => {
+    console.log("isCorrect state changed:", isCorrect);
+  }, [isCorrect]);
 
   return (
     <div className="puzzle-container">
