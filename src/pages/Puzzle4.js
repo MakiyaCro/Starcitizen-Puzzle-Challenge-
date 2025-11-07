@@ -95,18 +95,18 @@ function Puzzle4({ updateToken }) {
               {message}
             </div>
           )}
-
-          {isCorrect && (
-            <button 
-              type="button"
-              className="next-button"
-              onClick={handleNext}
-            >
-              Continue to Next Puzzle →
-            </button>
-          )}
         </form>
       </div>
+
+      {isCorrect && (
+        <button 
+          type="button"
+          className="next-button"
+          onClick={handleNext}
+        >
+          Continue to Next Puzzle →
+        </button>
+      )}
     </div>
   );
 }
