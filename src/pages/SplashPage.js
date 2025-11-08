@@ -26,7 +26,7 @@ function SplashPage({ updateToken }) {
 
   return (
     <div className="splash-container">
-      <div className="logo">STAR CITIZEN</div>
+      <div className="logo">Blackrock Puzzle Challenge</div>
       <button className="enter-button" onClick={handleEnter}>
         ENTER
       </button>
