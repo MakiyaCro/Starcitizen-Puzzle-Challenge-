@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Puzzle1({ updateToken }) {
@@ -6,16 +6,14 @@ function Puzzle1({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [nextData, setNextData] = useState(null); // store token & next puzzle
+  const [nextData, setNextData] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    console.log('Submit clicked, answer:', answer);
     setLoading(true);
     setMessage('');
 
     try {
-      console.log('Sending request...');
       const response = await fetch('/api/verify-answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -25,27 +23,21 @@ function Puzzle1({ updateToken }) {
         }),
       });
 
-      console.log('Response received:', response.status);
       const data = await response.json();
-      console.log('Data:', data);
 
       if (data.success) {
-        console.log('Setting isCorrect to true');
         setMessage(data.message);
         setIsCorrect(true);
-        // Store next puzzle and token locally instead of calling updateToken now
         setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
       }
     } catch (error) {
-      console.error('Error:', error);
       setMessage('Error submitting answer. Please try again.');
       setIsCorrect(false);
     } finally {
       setLoading(false);
-      console.log('Submit complete');
     }
   };
 
@@ -56,14 +48,10 @@ function Puzzle1({ updateToken }) {
     navigate('/puzzle2');
   };
 
-  useEffect(() => {
-    console.log("isCorrect state changed:", isCorrect);
-  }, [isCorrect]);
-
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">Part One: Simple Counting</h1>
+        <h1 className="puzzle-title">A NEW HAND TOUCHES THE BEACON</h1>
       </div>
       
       <div className="puzzle-content">

@@ -53,14 +53,10 @@ function Puzzle3({ updateToken }) {
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">Part Three: Vigenère Scavenger Hunt</h1>
+        <h1 className="puzzle-title">DARK PLACES</h1>
       </div>
       
       <div className="puzzle-content">
-        <div className="cipher-section">
-          <div className="cipher-label">Encoded with: perseus</div>
-        </div>
-
         <div className="cipher-section">
           <div className="cipher-label">Encoded Message:</div>
           <div className="puzzle-text" style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
@@ -72,21 +68,6 @@ function Puzzle3({ updateToken }) {
           </div>
         </div>
 
-        <div className="cipher-section">
-          <div className="cipher-label">Decoded Message:</div>
-          <div className="puzzle-text">
-            A FROZEN NIECE ORBITS A TOXIC GIANT'S REIGN,{'\n'}
-            WHERE TIME CARVES STONE, A CLAIRVOYANT'S PEACE REMAINS.{'\n'}
-            ASCEND HUMANITY'S LOOKOUT TOWER HIGH,{'\n'}
-            AT ONE HUNDRED, NEGATIVE TWELVE, LET YOUR GAZE FLY,{'\n'}
-            FIND THE ROOF WHERE THREE CAGES REST,{'\n'}
-            WHAT COLOR AND SHAPE SHARES THEIR NEST?
-          </div>
-        </div>
-
-        <div className="hint">
-          Hint: Use your answer from Puzzle 2 as the key to decode this Vigenère cipher. Then follow the clues in-game!
-        </div>
 
         <div className="answer-section">
           <input

@@ -53,13 +53,10 @@ function Puzzle2({ updateToken }) {
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">Part Two: Caesar Riddle</h1>
+        <h1 className="puzzle-title">LEGENDS OF NEW AND OLD</h1>
       </div>
       
       <div className="puzzle-content">
-        <div className="cipher-section">
-          <div className="cipher-label">Shift: 3</div>
-        </div>
 
         <div className="cipher-section">
           <div className="cipher-label">Encoded Message:</div>
@@ -69,20 +66,6 @@ function Puzzle2({ updateToken }) {
             ZKHUH WKH QRUWK VWDUV VKHOO LV FDVW L KXQW WKH URFN ELWWHQ WKLHYHV{'\n'}
             ZKR WKLQN WKHLU VKLHOGV ODVW
           </div>
-        </div>
-
-        <div className="cipher-section">
-          <div className="cipher-label">Decoded Message:</div>
-          <div className="puzzle-text">
-            In ancient skies, a hero slayed the serpent-haired beast,{'\n'}
-            His namesake now patrols where lawless miners feast.{'\n'}
-            Born from forges where the North Star's shell is cast,{'\n'}
-            I hunt the rock-bitten thieves who think their shields will last.
-          </div>
-        </div>
-
-        <div className="hint">
-          Hint: The answer is the name of the hero's ship or the hero himself.
         </div>
 
         <div className="answer-section">

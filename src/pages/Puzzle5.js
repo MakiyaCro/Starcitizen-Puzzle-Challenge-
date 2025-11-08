@@ -53,7 +53,7 @@ function Puzzle5({ updateToken }) {
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">Part Five: Simple Riddle Treasure Hunt</h1>
+        <h1 className="puzzle-title">BRING WEAPONS</h1>
       </div>
       
       <div className="puzzle-content">
@@ -62,10 +62,6 @@ function Puzzle5({ updateToken }) {
             A Private Haunt where there was Money From Nothing{'\n'}
             Go to the bow where credits would print and look for the key labeled _ _ - _ _.
           </div>
-        </div>
-
-        <div className="hint">
-          Hint: This riddle refers to a specific ship in Star Citizen that was associated with a credit exploit. Find the key label at the bow!
         </div>
 
         <div className="answer-section">

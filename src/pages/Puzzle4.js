@@ -53,7 +53,7 @@ function Puzzle4({ updateToken }) {
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">Part Four: Steganography</h1>
+        <h1 className="puzzle-title">WHERE CAN YOU HIDE</h1>
       </div>
       
       <div className="puzzle-content">
@@ -67,10 +67,6 @@ function Puzzle4({ updateToken }) {
           <div className="puzzle-text" style={{ fontSize: '1.5rem', textAlign: 'center' }}>
             Where Am I?
           </div>
-        </div>
-
-        <div className="hint">
-          Hint: These coordinates point to a specific location in Star Citizen. What planet or location do they indicate?
         </div>
 
         <div className="answer-section">
