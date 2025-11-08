@@ -57,17 +57,11 @@ function Puzzle4({ updateToken }) {
       </div>
       
       <div className="puzzle-content">
-        <div className="puzzle-text">
-          Hidden within your screenshot from the previous puzzle are coordinates:{'\n'}
-          <strong>0.00°, 58.86°, 43.44 GM</strong>
-        </div>
-
-        <div className="cipher-section">
-          <div className="cipher-label">The Question:</div>
-          <div className="puzzle-text" style={{ fontSize: '1.5rem', textAlign: 'center' }}>
-            Where Am I?
-          </div>
-        </div>
+        <img 
+          src="/red-skull-encoded.png" 
+          alt="Red Skull" 
+          className="puzzle-image"
+        />
 
         <div className="answer-section">
           <input

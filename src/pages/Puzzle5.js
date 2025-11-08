@@ -60,7 +60,7 @@ function Puzzle5({ updateToken }) {
         <div className="cipher-section">
           <div className="puzzle-text" style={{ fontSize: '1.3rem' }}>
             A Private Haunt where there was Money From Nothing{'\n'}
-            Go to the bow where credits would print and look for the key labeled _ _ - _ _.
+            Go to the bow where credits would print and look for the key.
           </div>
         </div>
 
@@ -70,7 +70,7 @@ function Puzzle5({ updateToken }) {
             name="answer"
             id="answer-input"
             className="answer-input"
-            placeholder="Enter the key label (format: XX-XX)..."
+            placeholder="Enter the key..."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             disabled={loading || isCorrect}
