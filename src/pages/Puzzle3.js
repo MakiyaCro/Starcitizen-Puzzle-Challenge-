@@ -6,10 +6,10 @@ function Puzzle3({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [nextData, setNextData] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage('');
 
@@ -30,7 +30,7 @@ function Puzzle3({ updateToken }) {
       if (data.success) {
         setMessage(data.message);
         setIsCorrect(true);
-        updateToken(data.next_puzzle, data.token);
+        setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
@@ -44,6 +44,9 @@ function Puzzle3({ updateToken }) {
   };
 
   const handleNext = () => {
+    if (nextData) {
+      updateToken(nextData.next_puzzle, nextData.token);
+    }
     navigate('/puzzle4');
   };
 
@@ -85,7 +88,7 @@ function Puzzle3({ updateToken }) {
           Hint: Use your answer from Puzzle 2 as the key to decode this Vigenère cipher. Then follow the clues in-game!
         </div>
 
-        <form onSubmit={handleSubmit} className="answer-section">
+        <div className="answer-section">
           <input
             type="text"
             name="answer"
@@ -99,9 +102,10 @@ function Puzzle3({ updateToken }) {
           
           {!isCorrect && (
             <button 
-              type="submit" 
+              type="button"
               className="submit-button"
               disabled={loading || !answer.trim()}
+              onClick={handleSubmit}
             >
               {loading ? 'Checking...' : 'Submit Answer'}
             </button>
@@ -112,7 +116,7 @@ function Puzzle3({ updateToken }) {
               {message}
             </div>
           )}
-        </form>
+        </div>
       </div>
 
       {isCorrect && (

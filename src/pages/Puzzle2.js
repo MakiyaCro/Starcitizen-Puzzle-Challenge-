@@ -6,10 +6,10 @@ function Puzzle2({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [nextData, setNextData] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage('');
 
@@ -30,7 +30,7 @@ function Puzzle2({ updateToken }) {
       if (data.success) {
         setMessage(data.message);
         setIsCorrect(true);
-        updateToken(data.next_puzzle, data.token);
+        setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
@@ -44,6 +44,9 @@ function Puzzle2({ updateToken }) {
   };
 
   const handleNext = () => {
+    if (nextData) {
+      updateToken(nextData.next_puzzle, nextData.token);
+    }
     navigate('/puzzle3');
   };
 
@@ -82,7 +85,7 @@ function Puzzle2({ updateToken }) {
           Hint: The answer is the name of the hero's ship or the hero himself.
         </div>
 
-        <form onSubmit={handleSubmit} className="answer-section">
+        <div className="answer-section">
           <input
             type="text"
             name="answer"
@@ -96,9 +99,10 @@ function Puzzle2({ updateToken }) {
           
           {!isCorrect && (
             <button 
-              type="submit" 
+              type="button"
               className="submit-button"
               disabled={loading || !answer.trim()}
+              onClick={handleSubmit}
             >
               {loading ? 'Checking...' : 'Submit Answer'}
             </button>
@@ -109,7 +113,7 @@ function Puzzle2({ updateToken }) {
               {message}
             </div>
           )}
-        </form>
+        </div>
       </div>
 
       {isCorrect && (

@@ -6,10 +6,10 @@ function Puzzle5({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [nextData, setNextData] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage('');
 
@@ -30,7 +30,7 @@ function Puzzle5({ updateToken }) {
       if (data.success) {
         setMessage(data.message);
         setIsCorrect(true);
-        updateToken(data.next_puzzle, data.token);
+        setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
@@ -44,6 +44,9 @@ function Puzzle5({ updateToken }) {
   };
 
   const handleNext = () => {
+    if (nextData) {
+      updateToken(nextData.next_puzzle, nextData.token);
+    }
     navigate('/final');
   };
 
@@ -65,7 +68,7 @@ function Puzzle5({ updateToken }) {
           Hint: This riddle refers to a specific ship in Star Citizen that was associated with a credit exploit. Find the key label at the bow!
         </div>
 
-        <form onSubmit={handleSubmit} className="answer-section">
+        <div className="answer-section">
           <input
             type="text"
             name="answer"
@@ -79,9 +82,10 @@ function Puzzle5({ updateToken }) {
           
           {!isCorrect && (
             <button 
-              type="submit" 
+              type="button"
               className="submit-button"
               disabled={loading || !answer.trim()}
+              onClick={handleSubmit}
             >
               {loading ? 'Checking...' : 'Submit Answer'}
             </button>
@@ -92,7 +96,7 @@ function Puzzle5({ updateToken }) {
               {message}
             </div>
           )}
-        </form>
+        </div>
       </div>
 
       {isCorrect && (

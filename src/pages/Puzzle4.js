@@ -6,10 +6,10 @@ function Puzzle4({ updateToken }) {
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [nextData, setNextData] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     setLoading(true);
     setMessage('');
 
@@ -30,7 +30,7 @@ function Puzzle4({ updateToken }) {
       if (data.success) {
         setMessage(data.message);
         setIsCorrect(true);
-        updateToken(data.next_puzzle, data.token);
+        setNextData({ next_puzzle: data.next_puzzle, token: data.token });
       } else {
         setMessage(data.message);
         setIsCorrect(false);
@@ -44,6 +44,9 @@ function Puzzle4({ updateToken }) {
   };
 
   const handleNext = () => {
+    if (nextData) {
+      updateToken(nextData.next_puzzle, nextData.token);
+    }
     navigate('/puzzle5');
   };
 
@@ -70,7 +73,7 @@ function Puzzle4({ updateToken }) {
           Hint: These coordinates point to a specific location in Star Citizen. What planet or location do they indicate?
         </div>
 
-        <form onSubmit={handleSubmit} className="answer-section">
+        <div className="answer-section">
           <input
             type="text"
             name="answer"
@@ -84,9 +87,10 @@ function Puzzle4({ updateToken }) {
           
           {!isCorrect && (
             <button 
-              type="submit" 
+              type="button"
               className="submit-button"
               disabled={loading || !answer.trim()}
+              onClick={handleSubmit}
             >
               {loading ? 'Checking...' : 'Submit Answer'}
             </button>
@@ -97,7 +101,7 @@ function Puzzle4({ updateToken }) {
               {message}
             </div>
           )}
-        </form>
+        </div>
       </div>
 
       {isCorrect && (
