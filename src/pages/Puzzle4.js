@@ -58,8 +58,8 @@ function Puzzle4({ updateToken }) {
       
       <div className="puzzle-content">
         <img 
-          src="/red-skull-encoded.png" 
-          alt="Red Skull" 
+          src="/1124063920756289934651839.png" 
+          alt="1124063920756289934651839" 
           className="puzzle-image"
         />
 
