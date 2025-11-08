@@ -60,7 +60,7 @@ function Puzzle3({ updateToken }) {
         <div className="cipher-section">
           <div className="cipher-label">Encoded Message:</div>
           <div className="puzzle-text" style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>
-            G U I L I V Y Y F V W V L I K F Z J G Z L A F W V F G Y Z J I V F V Y D M V I V Z F R U W G I N V J J Z L Y V G W F G F I N L E G Y Z J X V G W V I V R G F Y J G J W V Y T M P R G Y F Z E J F L L Z L P Z Z L D V I M F V M G Z L Y V M P Y T I V T Y V V G Z F N V Z D V F N V F V Z E L P I V G I V U F E U F Y T Z M V I L L U D M V I V Z M I V V W G A V J I V J Z D M G Z W L F L I G Y T J M G X V J M G I V J Z M V F I Y V J Z
+            P J I G D Y F C M V U I I J Q M K K E N G M M T Y M U F I W I W M A F L L V J I N A B I T S V P W H W K G R Y S R P R A V P G N E E L W J W P G V J I G S X R J S W W W C H Y M Q U F X X P K P I G Z S L L X I O T V Y A K B S I S E W L O F S V V V R Y Y P X Z N I N O T P M W P Y L N S L J K U R T J C Q J C F S X Y W V I G U A Y W V Y L W V V W G U Y T W I W W N O W E K U S F G G E E V W B S E I J Z E L W H X Y W M L F T W K
           </div>
         </div>
 

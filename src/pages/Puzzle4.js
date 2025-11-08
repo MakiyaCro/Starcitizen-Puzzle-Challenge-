@@ -69,7 +69,7 @@ function Puzzle4({ updateToken }) {
             name="answer"
             id="answer-input"
             className="answer-input"
-            placeholder="Enter the location name..."
+            placeholder="Enter the Answer..."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             disabled={loading || isCorrect}
