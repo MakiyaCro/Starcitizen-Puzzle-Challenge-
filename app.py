@@ -20,6 +20,7 @@ PUZZLE_ANSWERS = {
     'puzzle3': hashlib.sha256('RED SKULL'.upper().encode()).hexdigest(),  # Vigenere
     'puzzle4': hashlib.sha256('MICROTECH'.upper().encode()).hexdigest(),  # Steganography
     'puzzle5': hashlib.sha256('AS-12'.upper().encode()).hexdigest(),  # Riddle hunt
+    'puzzle6': hashlib.sha256('315P'.upper().encode()).hexdigest(),  # Ship identification
 }
 
 def hash_answer(answer):
@@ -46,23 +47,44 @@ def serve_react_app():
 @app.route('/api/verify-answer', methods=['POST'])
 def verify_answer():
     """Verify a puzzle answer and return a token for the next puzzle"""
+    print("\n" + "="*50)
+    print("VERIFY ANSWER ENDPOINT CALLED")
+    print("="*50)
+    
     data = request.get_json()
+    print(f"Request data: {data}")
+    
     puzzle_id = data.get('puzzle_id')
     answer = data.get('answer', '')
     
+    print(f"Puzzle ID: {puzzle_id}")
+    print(f"Answer received: '{answer}'")
+    print(f"Answer type: {type(answer)}")
+    print(f"Answer length: {len(answer)}")
+    
     if not puzzle_id or puzzle_id not in PUZZLE_ANSWERS:
+        print(f"❌ Invalid puzzle ID: {puzzle_id}")
         return jsonify({'success': False, 'message': 'Invalid puzzle'}), 400
     
     # Hash the submitted answer and compare
     answer_hash = hash_answer(answer)
+    expected_hash = PUZZLE_ANSWERS[puzzle_id]
     
-    if answer_hash == PUZZLE_ANSWERS[puzzle_id]:
+    print(f"Answer hash:   {answer_hash}")
+    print(f"Expected hash: {expected_hash}")
+    print(f"Hashes match:  {answer_hash == expected_hash}")
+    
+    if answer_hash == expected_hash:
         # Get next puzzle number
         puzzle_num = int(puzzle_id.replace('puzzle', ''))
         next_puzzle = puzzle_num + 1
         
         # Generate token for next puzzle
         token = generate_token(next_puzzle)
+        
+        print(f"✅ CORRECT! Next puzzle: {next_puzzle}")
+        print(f"Token generated: {token[:20]}...")
+        print("="*50 + "\n")
         
         return jsonify({
             'success': True,
@@ -71,6 +93,8 @@ def verify_answer():
             'next_puzzle': next_puzzle
         })
     else:
+        print(f"❌ INCORRECT")
+        print("="*50 + "\n")
         return jsonify({
             'success': False,
             'message': 'Incorrect answer. Try again.'
@@ -102,10 +126,24 @@ def verify_access():
 @app.route('/api/start', methods=['POST'])
 def start_game():
     """Initialize game and return token for puzzle 1"""
+    print("\n" + "="*50)
+    print("START GAME ENDPOINT CALLED")
+    print("="*50)
     token = generate_token(1)
+    print(f"Token generated for puzzle 1: {token[:20]}...")
+    print("="*50 + "\n")
     return jsonify({
         'success': True,
         'token': token
+    })
+
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for debugging"""
+    return jsonify({
+        'status': 'ok',
+        'message': 'API is running',
+        'endpoints': ['/api/start', '/api/verify-answer', '/api/verify-access', '/api/health']
     })
 
 # Catch-all route to serve React app for any unmatched routes

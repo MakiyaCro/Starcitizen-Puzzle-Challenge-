@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Puzzle5({ updateToken }) {
+function Puzzle6({ updateToken }) {
   const [answer, setAnswer] = useState('');
   const [message, setMessage] = useState('');
   const [isCorrect, setIsCorrect] = useState(false);
@@ -20,7 +20,7 @@ function Puzzle5({ updateToken }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          puzzle_id: 'puzzle5',
+          puzzle_id: 'puzzle6',
           answer: answer.trim(),
         }),
       });
@@ -47,22 +47,25 @@ function Puzzle5({ updateToken }) {
     if (nextData) {
       updateToken(nextData.next_puzzle, nextData.token);
     }
-    navigate('/puzzle6');
+    navigate('/final');
   };
 
   return (
     <div className="puzzle-container">
       <div className="puzzle-header">
-        <h1 className="puzzle-title">BRING WEAPONS</h1>
+        <h1 className="puzzle-title">Where Are We?</h1>
       </div>
       
       <div className="puzzle-content">
-        <div className="cipher-section">
-          <div className="puzzle-text" style={{ fontSize: '1.3rem' }}>
-            A Private Haunt where there was Money From Nothing{'\n'}
-            Go to the bow where credits would print and look for the key.
-          </div>
+        <div className="puzzle-text">
+          Identify the ship from this view.
         </div>
+
+        <img 
+          src="/6764364915273491573161965.png" 
+          alt="6764364915273491573161965" 
+          className="puzzle-image"
+        />
 
         <div className="answer-section">
           <input
@@ -70,7 +73,7 @@ function Puzzle5({ updateToken }) {
             name="answer"
             id="answer-input"
             className="answer-input"
-            placeholder="Enter the key..."
+            placeholder="Enter ship name..."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             disabled={loading || isCorrect}
@@ -101,11 +104,11 @@ function Puzzle5({ updateToken }) {
           className="next-button"
           onClick={handleNext}
         >
-          Continue to Next Puzzle →
+          Continue to Final Page →
         </button>
       )}
     </div>
   );
 }
 
-export default Puzzle5;
+export default Puzzle6;
