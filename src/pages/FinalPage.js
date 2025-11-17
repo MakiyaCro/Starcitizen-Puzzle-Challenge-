@@ -60,7 +60,7 @@ function FinalPage() {
 
         <div className="final-footer">
           <p>May your adventures in the verse be legendary.</p>
-          <p className="signature">— Makcro Drone Works</p>
+          <p className="signature">— LostScythe</p>
         </div>
       </div>
     </div>

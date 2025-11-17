@@ -32,11 +32,14 @@ body {
 .splash-container::before {
   content: '';
   position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: drift 60s linear infinite;
+  width: 100%;
+  height: 100%;
+  background-image: url('/logo-br.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 600px;
+  opacity: 0.15;
+  z-index: 0;
 }
 
 @keyframes drift {
@@ -262,11 +265,31 @@ body {
   align-items: center;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('/logo-br.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 600px;
+  opacity: 0.1;
+  z-index: 0;
 }
 
 .final-content {
-  max-width: 800px;
-  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logo, .enter-button {
+  position: relative;
+  z-index: 1;
 }
 
 .final-title {
