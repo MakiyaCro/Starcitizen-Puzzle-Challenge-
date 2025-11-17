@@ -5,20 +5,17 @@ function FinalPage() {
   const [completionHash, setCompletionHash] = useState('');
 
   useEffect(() => {
-    // Generate a unique completion hash based on timestamp and random data
     const generateHash = async () => {
       const timestamp = Date.now();
       const randomData = Math.random().toString(36).substring(2, 15);
       const data = `STARCITIZEN-PUZZLE-COMPLETE-${timestamp}-${randomData}`;
       
-      // Simple hash function (for display purposes)
       const encoder = new TextEncoder();
       const dataBuffer = encoder.encode(data);
       const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
       const hashArray = Array.from(new Uint8Array(hashBuffer));
       const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
       
-      // Take first 16 characters for a shorter hash
       setCompletionHash(hashHex.substring(0, 16).toUpperCase());
     };
 
@@ -30,8 +27,17 @@ function FinalPage() {
     alert('Completion code copied to clipboard!');
   };
 
+  const backgroundStyle = {
+    backgroundImage: `url(${logoBg})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '600px',
+    backgroundBlendMode: 'overlay',
+    opacity: 0.95
+  };
+
   return (
-    <div className="final-container">
+    <div className="final-container" style={backgroundStyle}>
       <div className="final-content">
         <h1 className="final-title">Congratulations, Citizen!</h1>
         
