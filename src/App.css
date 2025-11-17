@@ -18,44 +18,27 @@ body {
   background-color: #0a0a0a;
 }
 
+/* Splash Page */
 .splash-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.splash-container::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url('%PUBLIC_URL%/logo-bg.png');
+  background: linear-gradient(135deg, #0a0a0a 0%, #2e1a1a 100%);
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 600px;
-  opacity: 0.15;
-  z-index: 0;
-}
-
-@keyframes drift {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(50px, 50px);
-  }
+  position: relative;
+  overflow: hidden;
+  opacity: 0.95;
 }
 
 .logo {
   font-size: 4rem;
   font-weight: bold;
-  color: #00d4ff;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  color: #ff3333;
+  text-shadow: 0 0 20px rgba(255, 51, 51, 0.5);
   margin-bottom: 3rem;
   z-index: 1;
   letter-spacing: 4px;
@@ -65,8 +48,8 @@ body {
   padding: 1.5rem 4rem;
   font-size: 1.5rem;
   background: transparent;
-  color: #00d4ff;
-  border: 2px solid #00d4ff;
+  color: #ff3333;
+  border: 2px solid #ff3333;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
@@ -83,7 +66,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: #00d4ff;
+  background: #ff3333;
   transition: left 0.3s ease;
   z-index: -1;
 }
@@ -94,16 +77,17 @@ body {
 
 .enter-button:hover {
   color: #0a0a0a;
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 30px rgba(255, 51, 51, 0.6);
 }
 
+/* Puzzle Pages */
 .puzzle-container {
   min-height: 100vh;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #2e1a1a 100%);
 }
 
 .puzzle-header {
@@ -113,18 +97,18 @@ body {
 
 .puzzle-title {
   font-size: 2.5rem;
-  color: #00d4ff;
+  color: #ff3333;
   margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  text-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
 }
 
 .puzzle-content {
   max-width: 800px;
   width: 100%;
-  background: rgba(26, 26, 46, 0.6);
+  background: rgba(46, 26, 26, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(255, 51, 51, 0.2);
   backdrop-filter: blur(10px);
 }
 
@@ -139,9 +123,10 @@ body {
 .puzzle-image {
   max-width: 100%;
   height: auto;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  display: block;
   border-radius: 8px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  border: 1px solid rgba(255, 51, 51, 0.3);
 }
 
 .answer-section {
@@ -155,7 +140,7 @@ body {
   padding: 1rem;
   font-size: 1.1rem;
   background: rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(0, 212, 255, 0.3);
+  border: 2px solid rgba(255, 51, 51, 0.3);
   color: #ffffff;
   border-radius: 5px;
   transition: border-color 0.3s ease;
@@ -163,16 +148,16 @@ body {
 
 .answer-input:focus {
   outline: none;
-  border-color: #00d4ff;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  border-color: #ff3333;
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
 }
 
 .submit-button {
   padding: 1rem 2rem;
   font-size: 1.1rem;
   background: transparent;
-  color: #00d4ff;
-  border: 2px solid #00d4ff;
+  color: #ff3333;
+  border: 2px solid #ff3333;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
@@ -181,9 +166,9 @@ body {
 }
 
 .submit-button:hover {
-  background: #00d4ff;
+  background: #ff3333;
   color: #0a0a0a;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
 }
 
 .submit-button:disabled {
@@ -214,7 +199,7 @@ body {
 .next-button {
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
-  background: #00d4ff;
+  background: #ff3333;
   color: #0a0a0a;
   border: none;
   cursor: pointer;
@@ -227,25 +212,26 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3);
 }
 
 .next-button:hover {
-  box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+  box-shadow: 0 0 40px rgba(255, 51, 51, 0.8);
   transform: translateY(-3px);
-  background: #00e5ff;
+  background: #ff4444;
 }
 
+/* Caesar Cipher specific */
 .cipher-section {
   background: rgba(0, 0, 0, 0.3);
   padding: 1.5rem;
   border-radius: 8px;
   margin: 1.5rem 0;
-  border-left: 4px solid #00d4ff;
+  border-left: 4px solid #ff3333;
 }
 
 .cipher-label {
-  color: #00d4ff;
+  color: #ff3333;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -257,55 +243,44 @@ body {
   margin-top: 0.5rem;
 }
 
+/* Final Page */
 .final-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #2e1a1a 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 2rem;
   position: relative;
   overflow: hidden;
-}
-
-.final-container::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url('%PUBLIC_URL%/logo-bg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 600px;
-  opacity: 0.1;
-  z-index: 0;
+  opacity: 0.95;
 }
 
 .final-content {
-  position: relative;
-  z-index: 1;
-}
-
-.logo, .enter-button {
+  max-width: 800px;
+  text-align: center;
   position: relative;
   z-index: 1;
 }
 
 .final-title {
   font-size: 3.5rem;
-  color: #00d4ff;
+  color: #ff3333;
   margin-bottom: 2rem;
-  text-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  text-shadow: 0 0 30px rgba(255, 51, 51, 0.6);
   animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    text-shadow: 0 0 20px rgba(255, 51, 51, 0.4);
   }
   to {
-    text-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+    text-shadow: 0 0 40px rgba(255, 51, 51, 0.8);
   }
 }
 
@@ -321,17 +296,17 @@ body {
 }
 
 .completion-section {
-  background: rgba(26, 26, 46, 0.6);
+  background: rgba(46, 26, 26, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  border: 2px solid rgba(0, 212, 255, 0.4);
+  border: 2px solid rgba(255, 51, 51, 0.4);
   margin: 3rem 0;
   backdrop-filter: blur(10px);
 }
 
 .completion-label {
   font-size: 1.1rem;
-  color: #00d4ff;
+  color: #ff3333;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -378,8 +353,8 @@ body {
 .stat-number {
   font-size: 3rem;
   font-weight: bold;
-  color: #00d4ff;
-  text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+  color: #ff3333;
+  text-shadow: 0 0 15px rgba(255, 51, 51, 0.5);
 }
 
 .stat-label {
@@ -402,27 +377,8 @@ body {
 
 .signature {
   font-style: italic;
-  color: #00d4ff;
+  color: #ff3333;
   margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .final-title {
-    font-size: 2.5rem;
-  }
-
-  .completion-hash {
-    font-size: 1.3rem;
-    padding: 1rem;
-  }
-
-  .final-stats {
-    gap: 2rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -444,10 +400,19 @@ body {
   }
 
   .final-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
-  .final-message {
-    font-size: 1.2rem;
+  .completion-hash {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .final-stats {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
   }
 }

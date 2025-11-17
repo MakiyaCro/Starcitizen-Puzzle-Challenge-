@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import logoBg from '../logo-bg.png';
 
 function SplashPage({ updateToken }) {
   const navigate = useNavigate();
@@ -25,8 +26,8 @@ function SplashPage({ updateToken }) {
   };
 
   return (
-    <div className="splash-container">
-      <div className="logo">Blackrock Puzzle Challenge</div>
+    <div className="splash-container" style={{ backgroundImage: `url(${logoBg})` }}>
+      <div className="logo">BLACKROCK Puzzle Challenge</div>
       <button className="enter-button" onClick={handleEnter}>
         ENTER
       </button>

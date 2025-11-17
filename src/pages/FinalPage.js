@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import logoBg from '../logo-bg.png';
 
 function FinalPage() {
   const [completionHash, setCompletionHash] = useState('');
