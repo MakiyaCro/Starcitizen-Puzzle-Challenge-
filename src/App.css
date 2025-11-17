@@ -18,7 +18,6 @@ body {
   background-color: #0a0a0a;
 }
 
-/* Splash Page */
 .splash-container {
   display: flex;
   flex-direction: column;
@@ -95,7 +94,6 @@ body {
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
 }
 
-/* Puzzle Pages */
 .puzzle-container {
   min-height: 100vh;
   padding: 2rem;
@@ -138,8 +136,7 @@ body {
 .puzzle-image {
   max-width: 100%;
   height: auto;
-  margin: 2rem auto;
-  display: block;
+  margin: 2rem 0;
   border-radius: 8px;
   border: 1px solid rgba(0, 212, 255, 0.3);
 }
@@ -236,7 +233,6 @@ body {
   background: #00e5ff;
 }
 
-/* Caesar Cipher specific */
 .cipher-section {
   background: rgba(0, 0, 0, 0.3);
   padding: 1.5rem;
@@ -258,7 +254,6 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Final Page */
 .final-container {
   min-height: 100vh;
   display: flex;
@@ -266,22 +261,145 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-  text-align: center;
   padding: 2rem;
 }
 
+.final-content {
+  max-width: 800px;
+  text-align: center;
+}
+
 .final-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #00d4ff;
   margin-bottom: 2rem;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  }
+  to {
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+  }
 }
 
 .final-message {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #e0e0e0;
-  max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.final-message p {
+  margin-bottom: 1rem;
+}
+
+.completion-section {
+  background: rgba(26, 26, 46, 0.6);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 212, 255, 0.4);
+  margin: 3rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.completion-label {
+  font-size: 1.1rem;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.completion-hash {
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  color: #00ff64;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 100, 0.3);
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: all;
+}
+
+.completion-hash:hover {
+  background: rgba(0, 255, 100, 0.1);
+  border-color: #00ff64;
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.3);
+}
+
+.completion-hint {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.final-stats {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 3rem 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00d4ff;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.final-footer {
+  margin-top: 3rem;
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.final-footer p {
+  margin-bottom: 0.5rem;
+}
+
+.signature {
+  font-style: italic;
+  color: #00d4ff;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .final-title {
+    font-size: 2.5rem;
+  }
+
+  .completion-hash {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .final-stats {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
