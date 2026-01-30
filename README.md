@@ -2,6 +2,8 @@
 
 A secure, stateless puzzle game website for Star Citizen fans, built with React and Flask.
 
+Clause.ai was used in the development in this code.
+
 ## Features
 
 - **Dark-themed UI** with Star Citizen aesthetics
